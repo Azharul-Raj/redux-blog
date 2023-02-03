@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader';
 import AddAContent from '../../redux/thunk/contentThunk/addAContent';
 
 const AddContent = () => {

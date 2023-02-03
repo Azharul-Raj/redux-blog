@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import fetchAContent from '../../redux/thunk/contentThunk/getContent';
 
 const Card = ({ content }) => {
+  console.log(content)
   const {title,_id,total_view,image_url,time,details,author}=content
 
     return (
@@ -23,12 +24,12 @@ const Card = ({ content }) => {
           <div className="flex justify-between items-end mt-auto">
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 shrink-0 bg-gray-100 rounded-full overflow-hidden">
-                <img src={author.img} loading="lazy" alt="Photo by Brock Wegner" className="w-full h-full object-cover object-center" />
+                <img src={author?.img} loading="lazy" alt="Photo by Brock Wegner" className="w-full h-full object-cover object-center" />
               </div>
 
               <div>
-                <span className="block text-indigo-500">{author.name?author.name:"Unknown"}</span>
-                            <span className="block text-gray-400 text-sm">{ author.published_date?author.published_date:"Not found"}</span>
+                <span className="block text-indigo-500">{author?.name?author?.name:"Unknown"}</span>
+                            <span className="block text-gray-400 text-sm">{ author?.published_date?author.published_date:"Not found"}</span>
               </div>
             </div>
 
