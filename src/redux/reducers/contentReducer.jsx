@@ -1,4 +1,4 @@
-import { GET_CONTENT, GET_CONTENTS } from "../actionTypes/actionTypes"
+import { ADD_CONTENT, DELETE_CONTENT, GET_CONTENT, GET_CONTENTS } from "../actionTypes/actionTypes"
 
 const initialState = {
     contents: [],
@@ -14,6 +14,14 @@ export const contentReducer = (state = initialState, action) => {
         case GET_CONTENT: return {
             ...state,
             content:action.payload
+        }
+        case ADD_CONTENT: return {
+            ...state,
+            contents:[...state.contents,action.payload]
+        }
+        case DELETE_CONTENT: return {
+            ...state,
+            contents:state.contents.filter(content=>content._id!==action.payload)
         }
         default: return state;
     }
