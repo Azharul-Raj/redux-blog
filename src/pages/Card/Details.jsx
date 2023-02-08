@@ -23,7 +23,7 @@ const Details = () => {
     </div>
     )
   }
-  const { image_url, details, title,author } = data;
+  const { image_url, details, title,author,time } = data;
   return (
       <>
         <div className="bg-white py-6 sm:py-8 lg:py-12">
@@ -42,7 +42,7 @@ const Details = () => {
 
         <div>
           <div className="text-indigo-500 md:text-lg font-bold text-center sm:text-left">{author.name?author.name:"Unknown"}</div>
-          <p className="text-gray-500 text-sm md:text-base text-center sm:text-left">date : {author.published_date}</p>
+          <p className="text-gray-500 text-sm md:text-base text-center sm:text-left">Date : {time}</p>
         </div>
       </div>
             
