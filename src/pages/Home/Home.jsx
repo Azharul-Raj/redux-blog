@@ -20,7 +20,7 @@ const Home = () => {
     }
     return (
         <>
-            <div className="flex justify-between">
+            <div className="flex justify-between lg:mr-16 lg:mb-5">
                 <div className="flex-1"></div>
                 <div onClick={()=>setIsFilterOpen(!isFilterOpen)} className="relative inline-block text-left">
   <div>

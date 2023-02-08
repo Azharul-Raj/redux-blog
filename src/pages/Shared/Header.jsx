@@ -53,6 +53,16 @@ const Header = () => {
                   Content Lists
                 </Link>
                     </li>
+              <li>
+                <Link
+                  to="/reading_list"
+                  aria-label="Our product"
+                  title="Our product"
+                  className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Reading Lists
+                </Link>
+                    </li>
             </ul>
             <div className="lg:hidden">
               <button

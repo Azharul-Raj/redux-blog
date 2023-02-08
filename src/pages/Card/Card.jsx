@@ -29,7 +29,7 @@ const Card = ({ content }) => {
 
               <div>
                 <span className="block text-indigo-500">{author?.name?author?.name:"Unknown"}</span>
-                            <span className="block text-gray-400 text-sm">{ author?.published_date?author.published_date:"Not found"}</span>
+                            <span className="block text-gray-400 text-sm">{ time?time:"Not found"}</span>
               </div>
             </div>
 

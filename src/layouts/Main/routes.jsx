@@ -3,6 +3,7 @@ import Details from "../../pages/Card/Details";
 import AddContent from "../../pages/Home/AddContent";
 import ContentList from "../../pages/Home/ContentList";
 import Home from "../../pages/Home/Home";
+import ReadingList from "../../pages/Home/ReadingList";
 import Main from "./Main";
 
 export const routes = createBrowserRouter([
@@ -25,6 +26,10 @@ export const routes = createBrowserRouter([
             {
                 path: "/content_list",
                 element:<ContentList/>
+            },
+            {
+                path: "/reading_list",
+                element:<ReadingList/>
             }
         ]
     }
