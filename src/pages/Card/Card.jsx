@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addToReading } from '../../redux/actionCreators/contentAction';
 import fetchAContent from '../../redux/thunk/contentThunk/getContent';
 
 const Card = ({ content }) => {
-  console.log(content)
+  const dispatch=useDispatch()
   const {title,_id,total_view,image_url,time,details,author}=content
 
     return (
@@ -19,7 +20,7 @@ const Card = ({ content }) => {
             <p className="hover:text-indigo-500 active:text-indigo-600 transition duration-100">{title.slice(0,28)+"..."} </p>
           </h2>
 
-                <p className="text-gray-500 mb-8">{ details.slice(0,87) + '.....'}<Link  className='underline text-blue-500' to={`content/${_id}`}>See Details</Link></p>
+                <p className="text-gray-500 mb-8">{ details.slice(0,87) + '.....'}<Link onClick={()=>dispatch(addToReading(content))}  className='underline text-blue-500' to={`content/${_id}`}>See Details</Link></p>
 
           <div className="flex justify-between items-end mt-auto">
             <div className="flex items-center gap-2">

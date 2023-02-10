@@ -1,5 +1,7 @@
 import {
     ADD_CONTENT,
+    ADD_READING_COUNT,
+    ADD_TO_READING,
     DELETE_CONTENT,
     GET_CONTENT,
     GET_CONTENTS,
@@ -36,6 +38,19 @@ export const updateContent = (content) => {
 export const deleteContent = (id) => {
     return {
         type: DELETE_CONTENT,
+        payload:id
+    }
+}
+export const addToReading = (content) => {
+    return {
+        type: ADD_TO_READING,
+        payload:content
+    }
+}
+
+export const addReadingCount = (id) => {
+    return {
+        type: ADD_READING_COUNT,
         payload:id
     }
 }
