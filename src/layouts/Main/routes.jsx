@@ -24,6 +24,10 @@ export const routes = createBrowserRouter([
                 element:<AddContent/>
             },
             {
+                path: "/update_content/:id",
+                element:<AddContent/>
+            },
+            {
                 path: "/content_list",
                 element:<ContentList/>
             },

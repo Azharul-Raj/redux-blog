@@ -2,6 +2,7 @@ import React from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import deleteAContent from '../redux/thunk/contentThunk/deleteAContent';
 
 
@@ -28,10 +29,12 @@ const TableData = ({ content }) => {
                 </td>
                 <td className="px-6 py-4">
                 <div className="flex space-x-3">
+                    <Link to={`/update_content/${_id}`}>
                     <button className="h-5 w-5 rounded-full">
 
                     <FaEdit className='text-2xl' />
-                    </button>
+                        </button>
+                        </Link>
                     <button onClick={()=>dispatch(deleteAContent(_id))} className="">                        
                     <RiDeleteBin2Fill className='text-2xl text-red-500'/>
                     </button>
