@@ -48,9 +48,9 @@ export const addToReading = (content) => {
     }
 }
 
-export const addReadingCount = (id) => {
+export const addReadingCount = (content) => {
     return {
         type: ADD_READING_COUNT,
-        payload:id
+        payload:content
     }
 }

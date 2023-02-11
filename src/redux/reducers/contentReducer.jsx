@@ -1,18 +1,16 @@
+
 import { ADD_CONTENT, ADD_READING_COUNT, ADD_TO_READING, DELETE_CONTENT, GET_CONTENT, GET_CONTENTS } from "../actionTypes/actionTypes"
 
 const initialState = {
     contents: [],
     readingList:[],
     content: {},
-    count:0
+    data:{count:0}
 }
 
 export const contentReducer = (state = initialState, action) => {
     const inReadingList = state.readingList.find(content => content._id === action.payload._id);
-    const newList=state.readingList.filter(content=>content._id!==action.payload);
-    let count = 0;
-    const item = state.readingList.find(content => content._id === action.payload);
-    
+    const newList=state.readingList.filter(content=>content._id!==action.payload._id);
     switch (action.type) {
         case GET_CONTENTS: return {
             ...state,
@@ -33,12 +31,12 @@ export const contentReducer = (state = initialState, action) => {
         case ADD_TO_READING:
             if(!inReadingList) return {
             ...state,
-            readingList:[...state.readingList,action.payload]
+            readingList:[...state.readingList,{...action.payload,count:0}]
             }
-            case ADD_READING_COUNT: return {
-                ...state,
-                ...state.count+1,
-            readingList: [...newList, { ...item, count: state.count }],            
+        case ADD_READING_COUNT: return {            
+            ...state,
+            data:{...state.data,count:state.data.count+1},
+            readingList:[...newList,{...action.payload,count:state.data.count}]//
         }
         default: return state;
     }

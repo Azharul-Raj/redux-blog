@@ -6,8 +6,8 @@ import fetchContents from '../../redux/thunk/contentThunk/fetchContents';
 import Card from '../Card/Card';
 
 const Home = () => {
-    const [order, setOrder] = useState("")
-    const [isFilterOpen,setIsFilterOpen]=useState(false)
+  const [order, setOrder] = useState("")
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchContents(order))
