@@ -12,7 +12,7 @@ const ReadingList = () => {
         <h2>Reading History</h2>
       </div>
 {
-        lists.map(content => <ReadingCard key={content._id} content={content} />
+        lists.sort((a,b)=>b.count-a.count).map(content => <ReadingCard key={content._id} content={content} />
          )
 }
     </>
