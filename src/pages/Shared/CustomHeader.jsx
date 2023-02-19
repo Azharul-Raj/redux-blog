@@ -1,36 +1,41 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FaBars,FaTimes } from 'react-icons/fa'
-import icon from '../../assets/apple.png';
+import React from 'react';
+import { useRef } from 'react';
+import {FaReact,FaBars,FaTimes} from 'react-icons/fa';
+import './CustomCSS.css'
 
 const CustomHeader = () => {
-    const menuRef = useRef(null);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    useEffect(() => {
-        const { current } = menuRef;
-        if (isMenuOpen) {
-            current.style.transform = "translateX(0%)";
-        } else {
-            current.style.transform = "translateX(100%)";
-        }
-    }, [isMenuOpen]);
+
+    /* creates a reference to the nav element in the component. 
+    useRef hook is used to create a reference to the element so that it can be accessed and manipulated in the component.*/
+
+  const navRef = useRef();
+
+  /*Below line defines the showNavbar function, which toggles the "responsive" class on the nav element. 
+    The classList.toggle method is used to add or remove a class from the element.*/
+
+  const showNavbar = () => {
+    navRef.current.classList.toggle("responsive");
+  };
     return (
-        <div className='flex justify-between lg:mx-10'>
-            <div className="">
-                <img className='h-[50px]' src={icon} alt="" />
-            </div>
-            <div className="flex flex-col-reverse lg:block">
-                <ul ref={menuRef} className={`${isMenuOpen? "block duration-1000 ease-in-out absolute right-0 left-60 z-10 top-10 h-full bg-purple-800 transition-all":"hidden"} lg:flex lg:space-x-4`}>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Connect</li>
-                </ul>
-                <div className="block lg:hidden">
-                 {isMenuOpen || <button onClick={()=>setIsMenuOpen(true)}> <FaBars className='text-2xl z-20'/></button> }
-                 {isMenuOpen && <button onClick={()=>setIsMenuOpen(false)}> <FaTimes className='text-2xl z-20'/></button> }
-                </div>
-            </div>
-        </div>
+        <div className="container">
+        {/* Renders a react icon with the size of 40px */}
+        <FaReact size={40} />
+        {/* Sets the navRef as a reference to the nav element */}
+        <nav ref={navRef}>
+          <a href="/#">Home</a>
+          <a href="/#">Blog</a>
+          <a href="/#">About</a>
+          <a href="/#">Contact</a>
+          {/* Renders a button with the class of nav-btn nav-close-btn and an FaTimes icon inside */}
+          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+            <FaTimes />
+          </button>
+        </nav>
+        {/* Renders a button with the class of nav-btn and an FaBars icon inside */}
+        <button className="nav-btn" onClick={showNavbar}>
+          <FaBars />
+        </button>
+      </div>
     );
 };
 
