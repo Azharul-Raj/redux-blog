@@ -1,42 +1,47 @@
-import React from 'react';
-import { useRef } from 'react';
-import {FaReact,FaBars,FaTimes} from 'react-icons/fa';
-import './CustomCSS.css'
+// import { list } from 'postcss';
+import React, { useState } from 'react';
+import {FaBars, FaReact, FaTimes} from 'react-icons/fa';
 
 const CustomHeader = () => {
-
-    /* creates a reference to the nav element in the component. 
-    useRef hook is used to create a reference to the element so that it can be accessed and manipulated in the component.*/
-
-  const navRef = useRef();
-
-  /*Below line defines the showNavbar function, which toggles the "responsive" class on the nav element. 
-    The classList.toggle method is used to add or remove a class from the element.*/
-
-  const showNavbar = () => {
-    navRef.current.classList.toggle("responsive");
-  };
-    return (
-        <div className="container">
-        {/* Renders a react icon with the size of 40px */}
-        <FaReact size={40} />
-        {/* Sets the navRef as a reference to the nav element */}
-        <nav ref={navRef}>
-          <a href="/#">Home</a>
-          <a href="/#">Blog</a>
-          <a href="/#">About</a>
-          <a href="/#">Contact</a>
-          {/* Renders a button with the class of nav-btn nav-close-btn and an FaTimes icon inside */}
-          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-            <FaTimes />
-          </button>
-        </nav>
-        {/* Renders a button with the class of nav-btn and an FaBars icon inside */}
-        <button className="nav-btn" onClick={showNavbar}>
-          <FaBars />
-        </button>
+  const [isOpen,setIsOpen]=useState(false);
+  const menuList=[
+    {
+      name:"Home",
+      className:"nav-link"
+    },
+    {
+      name:"About",
+      className:"nav-link"
+    },
+    {
+      name:"Details",
+      className:"nav-link"
+    },
+    {
+      name:"Contact",
+      className:"nav-link"
+    },
+  ]
+  return (
+    <nav className='flex justify-between'>
+      <div className="ml-5">
+        <FaReact className='h-10 w-10'/>
       </div>
-    );
+      <div className="">
+        <div className="lg:hidden">
+          {
+            isOpen ?<FaTimes onClick={()=>setIsOpen(!isOpen)} className='h-10 z-20 duration-1000 ease-in-out'/> : <FaBars onClick={()=>setIsOpen(!isOpen)} className='h-10 left-0 duration-1000 ease-in-out'/>
+          }
+        </div>
+        {/* <div className="relative"> */}
+        <ul className={`bg-white lg:flex lg:bg-tr justify-between mx-5 my-3 ${isOpen? " absolute top-4 right-[-10%] z-10 duration-500 w-[50%] h-[110vh] transition-all ease-in-out":" right-[-50%] z-10 duration-1000 md:duration-1000 h-[110vh] ease-out absolute"}`}>
+        {/* {isOpen &&} */}
+          {menuList.map(data=><li key={data.name} className='mx-5 font-bold cursor-pointer px-5 bg-indigo-500 rounded-full'>{data.name}</li>)}
+        </ul>
+        {/* </div> */}
+      </div>
+    </nav>
+  );
 };
 
 export default CustomHeader;
